@@ -1,6 +1,6 @@
 let fs = require('fs');
 // insert your directory here:
-let targetDirectory = "my directory"
+let targetDirectory = "target directory"
 let files = fs.readdirSync(targetDirectory);
 
 for (let i = 0; i < files.length; i++) {
@@ -12,9 +12,16 @@ for (let i = 0; i < files.length; i++) {
         });
     }
     // change PANO to IMG
-    if (files[i].charAt(0) === "P" && files[i].charAt(1) === "A") {
+    else if (files[i].charAt(0) === "P" && files[i].charAt(1) === "A") {
         var changedName = files[i].split('PANO').join("");
-        fs.rename(targetDirectory + files[i], targetDirectory + changedName, function (err) {
+        fs.rename(targetDirectory + files[i], targetDirectory + "IMG" + changedName, function (err) {
+            if (err) console.log('ERROR: ' + err);
+        });
+    }
+    // change Screenshot to IMG
+    else if (files[i].charAt(0) === "S" && files[i].charAt(1) === "c") {
+        var changedName = files[i].split('Screenshot').join("").split('-').join("_");
+        fs.rename(targetDirectory + files[i], targetDirectory + "IMG" + changedName, function (err) {
             if (err) console.log('ERROR: ' + err);
         });
     }
