@@ -25,4 +25,11 @@ for (let i = 0; i < files.length; i++) {
             if (err) console.log('ERROR: ' + err);
         });
     }
+    // change COLLAGE to IMG
+    else if (files[i].length - 5 === "E" && files[i].length - 6 === "G") {
+        var changedName = files[i].split('-COLLAGE').join("");
+        fs.rename(targetDirectory + files[i], targetDirectory + "IMG_" + changedName, function (err) {
+            if (err) console.log('ERROR: ' + err);
+        });
+    }
 }
