@@ -32,4 +32,11 @@ for (let i = 0; i < files.length; i++) {
             if (err) console.log('ERROR: ' + err);
         });
     }
+    // change COVER to IMG
+    else if (files[i].length - 5 === "R" && files[i].length - 6 === "E") {
+        var changedName = files[i].split('_COVER').join("").split('BURST');
+        fs.rename(targetDirectory + files[i], targetDirectory + "IMG_" + changedName[1], function (err) {
+            if (err) console.log('ERROR: ' + err);
+        });
+    }
 }
