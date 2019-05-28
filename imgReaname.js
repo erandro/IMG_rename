@@ -39,4 +39,10 @@ for (let i = 0; i < files.length; i++) {
             if (err) console.log('ERROR: ' + err);
         });
     }
+    // change ANIMATION to IMG
+    else if (files[i].length - 5 === "N" && files[i].length - 6 === "O") {
+        fs.rename(targetDirectory + files[i], targetDirectory + "IMG_" + files[i], function (err) {
+            if (err) console.log('ERROR: ' + err);
+        });
+    }
 }
